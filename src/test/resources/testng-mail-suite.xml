@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Mail.ru email test" verbose="1">
+
+    <test name="Login test">
+        <parameter name="login" value="johnny_ring" />
+        <parameter name="password" value="WhereIsMyMoney" />
+        <classes>
+            <class name="by.epamlab.webdriver_basics.test.MailRuEmailTest">
+                <methods>
+                    <include name="testLoginInEmail" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
