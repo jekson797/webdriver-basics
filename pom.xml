@@ -6,10 +6,9 @@
 
     <groupId>org.example</groupId>
     <artifactId>webdriver-basics</artifactId>
-    <version>${project.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.version>1.0-SNAPSHOT</project.version>
         <testng.version>6.14.3</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
@@ -17,6 +16,8 @@
         <maven-compiler.version>3.8.1</maven-compiler.version>
         <suite.file>src/test/resources/testng-mail-suite.xml</suite.file>
         <log4j-core.version>2.13.0</log4j-core.version>
+        <slf4j-simple.version>1.7.30</slf4j-simple.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -41,6 +42,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

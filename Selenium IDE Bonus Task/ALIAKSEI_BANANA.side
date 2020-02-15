@@ -1,0 +1,103 @@
+{
+  "id": "98872d6b-9200-41ae-a9df-18ecab238d3e",
+  "version": "2.0",
+  "name": "Banana Song",
+  "url": "https://www.google.com",
+  "tests": [{
+    "id": "835f9f8d-3cd9-4027-a9ae-6c83ffa42781",
+    "name": "Banana Song Test",
+    "commands": [{
+      "id": "9f43c251-ec75-43c3-85b3-67fbfe71bf5c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "784701ba-9764-4b06-be73-615b9583d0e4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5fa76b87-918b-4514-b354-149663da34d4",
+      "comment": "",
+      "command": "type",
+      "target": "name=q",
+      "targets": [
+        ["name=q", "name"],
+        ["css=.gLFyf", "css:finder"],
+        ["xpath=//input[@name='q']", "xpath:attributes"],
+        ["xpath=//form[@id='tsf']/div[2]/div/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "banana song"
+    }, {
+      "id": "5375d661-160d-4ac3-ae17-5667f5f6841b",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=q",
+      "targets": [
+        ["name=q", "name"],
+        ["css=.gLFyf", "css:finder"],
+        ["xpath=//input[@name='q']", "xpath:attributes"],
+        ["xpath=//form[@id='tsf']/div[2]/div/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "7b22ad0f-319c-433b-8a08-7d0dc9d9a334",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(@href, 'youtube.com')]/h3[contains(text(), 'Despicable Me')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70276777-a633-4edd-85ff-10a50d72acac",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Despicable Me 2 | Minions Banana Song (2013) SNSD TTS - YouTube",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6d3b931-e5cf-41ce-a99e-0c36cda8fb5a",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#info-text>#count",
+      "targets": [],
+      "value": "views"
+    }, {
+      "id": "c534e91d-19ea-43a0-b5b3-ccd7d0dcf9b6",
+      "comment": "",
+      "command": "executeScript",
+      "target": "var views = ${views}; var regex = /[5-9]\\d{1,}[ ,][1-9]\\d+[ ,][1-9]\\d+[ ,]\\S+/; return regex.test(views);",
+      "targets": [],
+      "value": "result"
+    }, {
+      "id": "8dcd22a0-241c-46e1-a570-08d2c6c1295d",
+      "comment": "",
+      "command": "assert",
+      "target": "result",
+      "targets": [],
+      "value": "true"
+    }, {
+      "id": "d547b95b-e86f-4fe6-b553-b3996cabad50",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2f40b405-497d-4b4c-aa80-7e59f939619d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["835f9f8d-3cd9-4027-a9ae-6c83ffa42781"]
+  }],
+  "urls": ["https://www.google.com/"],
+  "plugins": []
+}

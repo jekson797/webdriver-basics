@@ -3,14 +3,14 @@ package by.epamlab.webdriver_basics.page;
 import by.epamlab.webdriver_basics.driver.DriverSingleton;
 import by.epamlab.webdriver_basics.service.ConfigReader;
 import by.epamlab.webdriver_basics.service.Constants;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class AbstractPage {
+public abstract class AbstractPage {
 
     private WebDriver driver = DriverSingleton.getDriver();
     private int explicitTimeout = Integer.parseInt(ConfigReader.get(Constants.COMMON_TIMEOUT));
@@ -21,12 +21,24 @@ public class AbstractPage {
         driver.manage().timeouts().implicitlyWait(implicitTimeout, TimeUnit.SECONDS);
     }
 
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
+
     protected AbstractPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public String getPageUrl() {
+    protected String getPageUrl() {
         return driver.getCurrentUrl();
+    }
+
+    protected void waitUntilElementToBeClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    protected void waitUntilInvisibilityOfElementLocated(By element) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
     protected void openPage(String pageUrl) {
@@ -39,5 +51,13 @@ public class AbstractPage {
 
     protected void clickElement(WebElement element) {
         element.click();
+    }
+
+    protected String getElementText(WebElement element) {
+        return element.getText();
+    }
+
+    protected String getAttributeValue(WebElement element, String attributeName) {
+        return element.getAttribute(attributeName);
     }
 }

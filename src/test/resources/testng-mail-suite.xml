@@ -7,11 +7,23 @@
         <parameter name="login" value="johnny_ring" />
         <parameter name="password" value="WhereIsMyMoney" />
         <classes>
-            <class name="by.epamlab.webdriver_basics.test.MailRuEmailTest">
-                <methods>
-                    <include name="testLoginInEmail" />
-                </methods>
-            </class>
+            <class name="by.epamlab.webdriver_basics.test.EmailLoginTest" />
+        </classes>
+    </test>
+
+    <test name="Saving mail as a draft test">
+        <parameter name="email-addressee" value="jekson797@gmail.com" />
+        <parameter name="email-subject" value="Test" />
+        <parameter name="email-body" value="Just want to be sure that test is working" />
+        <classes>
+            <class name="by.epamlab.webdriver_basics.test.EmailSaveMailTest" />
+            <class name="by.epamlab.webdriver_basics.test.EmailDraftContentTest" />
+        </classes>
+    </test>
+
+    <test name="Sending mail from draft folder test">
+        <classes>
+            <class name="by.epamlab.webdriver_basics.test.EmailSendDraftMailTest" />
         </classes>
     </test>
 </suite>

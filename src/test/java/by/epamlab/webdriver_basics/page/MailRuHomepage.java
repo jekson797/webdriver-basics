@@ -22,12 +22,12 @@ public class MailRuHomepage extends AbstractPage {
         return this;
     }
 
-    public MailRuHomepage signInEmail(String login, String password) {
+    public EmailPage signInEmail(String login, String password) {
         insertLogin(login);
         clickElement(submitBtn);
         insertPassword(password);
         clickElement(submitBtn);
-        return this;
+        return new EmailPage();
     }
 
     private void insertLogin(String login) {
