@@ -27,7 +27,7 @@ public class EmailSendDraftMailTest extends MailSendingCondition {
 
     private void sendLastSavedMailInDraftFolder(EmailDraftPage draftPage) {
         MailSendingForm sendingForm = draftPage.openLastAddedMail();
-        sendingForm.pressSendMail();
+        sendingForm.pressSendBtn();
         draftPage.refreshPage();
     }
 }

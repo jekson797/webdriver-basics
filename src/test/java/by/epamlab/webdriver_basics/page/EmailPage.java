@@ -27,6 +27,11 @@ public class EmailPage extends AbstractPage {
         return this;
     }
 
+    public String getUrl() {
+        waitUntilElementToBeClickable(inboxBtn);
+        return getPageUrl();
+    }
+
     public EmailDraftPage pressDraftBtn() {
         waitUntilElementToBeClickable(draftBtn);
         clickElement(draftBtn);
@@ -39,25 +44,12 @@ public class EmailPage extends AbstractPage {
         return new EmailSentPage();
     }
 
-    public String getEmailInboxPageUrl() {
-        waitUntilElementToBeClickable(inboxBtn);
-        return getPageUrl();
-    }
-
-    public EmailPage pressWriteLetterBtn() {
+    public MailSendingForm pressWriteLetterBtn() {
         clickElement(writeLetterBtn);
-        return this;
+        return new MailSendingForm();
     }
 
-    public EmailPage writeMail(String addressee, String subject, String body) {
-        new MailSendingForm().
-                writeMailAddressee(addressee).
-                writeMailSubject(subject).
-                writeMailMessage(body);
-        return this;
-    }
-
-    public void logout() {
+    public void pressLogout() {
         waitUntilElementToBeClickable(logoutBtn);
         clickElement(logoutBtn);
     }

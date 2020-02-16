@@ -5,7 +5,7 @@ import by.epamlab.webdriver_basics.service.Constants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MailRuHomepage extends AbstractPage {
+public class MailRuHomePage extends AbstractPage {
 
     @FindBy(id = "mailbox:login")
     private WebElement loginField;
@@ -14,27 +14,34 @@ public class MailRuHomepage extends AbstractPage {
     private WebElement passwordField;
 
     @FindBy(css = ".o-control[type='submit']")
-    private WebElement submitBtn;
+    private WebElement enterPasswordBtn;
 
-    public MailRuHomepage openMailRuHomepage() {
+    @FindBy(css = ".o-control[type='submit']")
+    private WebElement loginBtn;
+
+    public MailRuHomePage open() {
         String pageUrl = ConfigReader.get(Constants.MAIL_RU_HOMEPAGE_URL);
         openPage(pageUrl);
         return this;
     }
 
-    public EmailPage signInEmail(String login, String password) {
-        insertLogin(login);
-        clickElement(submitBtn);
-        insertPassword(password);
-        clickElement(submitBtn);
+    public MailRuHomePage pressEnterPasswordBtn() {
+        clickElement(enterPasswordBtn);
+        return this;
+    }
+
+    public EmailPage pressLoginBtn() {
+        clickElement(loginBtn);
         return new EmailPage();
     }
 
-    private void insertLogin(String login) {
+    public MailRuHomePage fillLoginField(String login) {
         setValue(loginField, login);
+        return this;
     }
 
-    private void insertPassword(String password) {
+    public MailRuHomePage fillPasswordField(String password) {
         setValue(passwordField, password);
+        return this;
     }
 }

@@ -33,10 +33,15 @@ public class EmailDraftContentTest {
 
     private Map<String, String> getDraftMailContent() {
         MailSendingForm sendingForm = new EmailDraftPage().openLastAddedMail();
-        String addressee = sendingForm.getMailAddressee();
-        String subject = sendingForm.getMailSubject();
-        String body = sendingForm.getMailBodyWithoutSignature();
-        sendingForm.closeSendingForm();
+        String addressee = sendingForm.getAddresseeFieldValue();
+        String subject = sendingForm.getSubjectValue();
+        String body = cutMailSignature(sendingForm.getMessageFieldValue());
+        sendingForm.pressCloseBtn();
         return createMapWithMailContent(addressee, subject, body);
+    }
+
+    private String cutMailSignature(String stringWithSignature) {
+        String regexForMailSignature = "\\s+ПОДПИСЬ";
+        return stringWithSignature.split(regexForMailSignature)[0];
     }
 }

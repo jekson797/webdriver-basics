@@ -23,13 +23,12 @@ public class EmailSaveMailTest {
     }
 
     private EmailSaveMailTest writeMail(String addressee, String subject, String body) {
-        new EmailPage().
-                pressWriteLetterBtn().
-                writeMail(addressee, subject, body);
+        new EmailPage().pressWriteLetterBtn().
+                fillAddresseeField(addressee).fillSubjectField(subject).fillMessageField(body);
         return this;
     }
 
     private void saveMailAsDraft() {
-        new MailSendingForm().pressSave().closeSendingForm();
+        new MailSendingForm().pressSaveBtn().pressCloseBtn();
     }
 }

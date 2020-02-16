@@ -20,7 +20,7 @@ public class MailSendingCondition {
 
     @AfterClass
     public void logOff() {
-        new EmailPage().logout();
+        new EmailPage().pressLogout();
     }
 
     public int getSentMailsBeforeSendingMail() {

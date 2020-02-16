@@ -16,7 +16,7 @@ public class EmailDraftPage extends EmailPage {
     }
 
     public MailSendingForm openLastAddedMail() {
-        if(mailsList.size() <= 0) {
+        if(mailsList.isEmpty()) {
             throw new AssertionError("Draft folder is empty");
         }
         clickElement(mailsList.get(0));

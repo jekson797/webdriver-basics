@@ -25,12 +25,12 @@ public abstract class AbstractPage {
         driver.navigate().refresh();
     }
 
-    protected AbstractPage() {
-        PageFactory.initElements(driver, this);
+    public String getPageUrl() {
+        return driver.getCurrentUrl();
     }
 
-    protected String getPageUrl() {
-        return driver.getCurrentUrl();
+    protected AbstractPage() {
+        PageFactory.initElements(driver, this);
     }
 
     protected void waitUntilElementToBeClickable(WebElement element) {

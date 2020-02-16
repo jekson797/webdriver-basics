@@ -28,51 +28,46 @@ public class MailSendingForm extends AbstractPage {
     @FindBy(xpath = "//button[@data-promo-id='extend']/following-sibling::button")
     private WebElement closeBtn;
 
-    public MailSendingForm writeMailAddressee(String addressee) {
+    public MailSendingForm fillAddresseeField(String addressee) {
         setValue(addresseeFieldInput, addressee);
         return this;
     }
 
-    public MailSendingForm writeMailSubject(String subject) {
+    public MailSendingForm fillSubjectField(String subject) {
         setValue(subjectField, subject);
         return this;
     }
 
-    public void writeMailMessage(String message) {
+    public MailSendingForm fillMessageField(String message) {
         setValue(messageField, message);
+        return this;
     }
 
-    public MailSendingForm pressSave() {
+    public MailSendingForm pressSaveBtn() {
         clickElement(saveBtn);
         return this;
     }
 
-    public void closeSendingForm() {
+    public void pressCloseBtn() {
         clickElement(closeBtn);
     }
 
-    public String getMailAddressee() {
+    public String getAddresseeFieldValue() {
         return getElementText(addresseeFieldValue);
     }
 
-    public String getMailSubject() {
-        String attributeNameWithSubjectValue = "value";
-        return getAttributeValue(subjectField, attributeNameWithSubjectValue);
+    public String getSubjectValue() {
+        String subjectValueAttributeName = "value";
+        return getAttributeValue(subjectField, subjectValueAttributeName);
     }
 
-    public String getMailBodyWithoutSignature() {
-        String mailBody = getElementText(messageField);
-        return cutSignature(mailBody);
+    public String getMessageFieldValue() {
+        return getElementText(messageField);
     }
 
-    public void pressSendMail() {
+    public void pressSendBtn() {
         clickElement(sendBtn);
         String sendingFormXpath = "//div[@class='compose-app__compose']";
         waitUntilInvisibilityOfElementLocated(By.xpath(sendingFormXpath));
-    }
-
-    private String cutSignature(String stringWithSignature) {
-        String regexForMailSignature = "\\s+ПОДПИСЬ";
-        return stringWithSignature.split(regexForMailSignature)[0];
     }
 }
